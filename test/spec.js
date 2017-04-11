@@ -39,4 +39,16 @@ describe("WebRTC Sample", () => {
 
         expect(roomNameFromUrl).toEqual(roomNameFromConsole);
     });
+
+    xit("foo", () => {
+        const browser2 = browser.forkNewDriverInstance(true);
+        const element2 = browser2.element;
+        const incomingPhotoOnBrowser2 = element(by.css("#trail canvas"))
+
+        browser2.ignoreSynchronization = true
+
+        webrtcSample.snapAndSendButton.click();
+
+        expect(incomingPhotoOnBrowser2.isDisplayed()).toBe(true);
+    }).pend("Needs debug. Fails with Angular could not be found even with browser2.ignoreSynchronization = true");
 });
