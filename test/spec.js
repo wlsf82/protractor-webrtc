@@ -9,6 +9,13 @@ describe("WebRTC Sample", () => {
         browser.get("");
     });
 
+    it("should show title", () => {
+        const title = "WebRTC Sample";
+
+        expect(browser.getTitle()).toEqual(title);
+        expect(webrtcSample.title.getText()).toEqual(title);
+    });
+
     it("should show video element and buttons for 'snap', 'send' and 'send and snap'", () => {
         expect(webrtcSample.videoCanvas.isDisplayed()).toBe(true);
         expect(webrtcSample.snapButton.isDisplayed()).toBe(true);

@@ -2,6 +2,7 @@
 
 class WebrtcSample {
     constructor() {
+        this.title = element(by.css("h1"));
         this.videoCanvas = element(by.id("videoCanvas"));
         this.snapButton = element(by.id("snap"));
         this.sendButton = element(by.id("send"));
