@@ -7,6 +7,7 @@ class WebrtcSample {
         this.snapButton = element(by.id("snap"));
         this.sendButton = element(by.id("send"));
         this.snapAndSendButton = element(by.id("snapAndSend"));
+        this.incomingPhotosTitle = element(by.css("h2"));
     }
 
     getRoomNameFromUrl() {

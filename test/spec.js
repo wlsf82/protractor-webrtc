@@ -29,6 +29,10 @@ describe("WebRTC Sample", () => {
         expect(isVideoAutoplayEnabled).toBe(true);
     });
 
+    it("should show header for incoming photos", () => {
+        expect(webrtcSample.incomingPhotosTitle.getText()).toEqual("Incoming photos");
+    });
+
     it("should have the same room name on url and when returning it on console", () => {
         const roomNameFromUrl = webrtcSample.getRoomNameFromUrl();
         const roomNameFromConsole = browser.executeScript("return room;");
