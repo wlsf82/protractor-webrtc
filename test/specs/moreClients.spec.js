@@ -1,7 +1,7 @@
 "use strict";
 
 const EC = protractor.ExpectedConditions;
-const WebrtcSample = require("./webrtcSample.po");
+const WebrtcSample = require("../pageObjects/webrtcSample.po");
 const DEFAULT_TIMEOUT = 5000;
 
 describe("WebRTC Sample - more than one client", () => {

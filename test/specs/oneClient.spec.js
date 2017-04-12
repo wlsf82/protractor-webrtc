@@ -1,6 +1,6 @@
 "use strict";
 
-const WebrtcSample = require("./webrtcSample.po");
+const WebrtcSample = require("../pageObjects/webrtcSample.po");
 
 describe("WebRTC Sample - one client", () => {
     const webrtcSample = new WebrtcSample();
