@@ -89,6 +89,22 @@ describe("WebRTC Sample", () => {
         browser2.quit();
     });
 
+    it("should not show incoming photo on browser 2 when browser 1 clicks 'snap and send', but after that, browser 2 refreshes, and they are in the same room", () => {
+        const browser2 = browser.forkNewDriverInstance(true);
+        const element2 = browser2.element;
+        const incomingPhotoOnBrowser2 = element2(by.css("#trail canvas"));
+
+        browser2.ignoreSynchronization = true;
+
+        webrtcSample.snapAndSendButton.click();
+        browser2.wait(EC.visibilityOf(incomingPhotoOnBrowser2), DEFAULT_TIMEOUT);
+        browser2.refresh();
+
+        expect(incomingPhotoOnBrowser2.isPresent()).not.toBe(true);
+
+        browser2.quit();
+    });
+
     it("should show an alert saying that room is full when a third client tries to join", () => {
         const browser2 = browser.forkNewDriverInstance(true);
 
