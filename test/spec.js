@@ -55,4 +55,20 @@ describe("WebRTC Sample", () => {
 
         browser2.quit();
     });
+
+    it("should show incoming photo on browser 2 when browser 1 clicks 'snap' and 'send' and they are in the same room", () => {
+        const browser2 = browser.forkNewDriverInstance(true);
+        const element2 = browser2.element;
+        const incomingPhotoOnBrowser2 = element2(by.css("#trail canvas"));
+
+        browser2.ignoreSynchronization = true;
+
+        webrtcSample.snapButton.click();
+        webrtcSample.sendButton.click();
+        browser2.wait(EC.visibilityOf(incomingPhotoOnBrowser2), 3000);
+
+        expect(incomingPhotoOnBrowser2.isDisplayed()).toBe(true);
+
+        browser2.quit();
+    });
 });
