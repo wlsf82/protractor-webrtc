@@ -24,7 +24,7 @@ module.exports.config = {
             "displaySpecDuration": true
         }));
     },
-    jasmineNodeOpts: {
+    "jasmineNodeOpts": {
         "defaultTimeoutInterval": 10000
     }
 };
