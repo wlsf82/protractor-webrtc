@@ -2,6 +2,7 @@
 
 const EC = protractor.ExpectedConditions;
 const WebrtcSample = require("./webrtcSample.po");
+const DEFAULT_TIMEOUT = 5000;
 
 describe("WebRTC Sample", () => {
     const webrtcSample = new WebrtcSample();
@@ -65,10 +66,26 @@ describe("WebRTC Sample", () => {
 
         webrtcSample.snapButton.click();
         webrtcSample.sendButton.click();
-        browser2.wait(EC.visibilityOf(incomingPhotoOnBrowser2), 3000);
+        browser2.wait(EC.visibilityOf(incomingPhotoOnBrowser2), DEFAULT_TIMEOUT);
 
         expect(incomingPhotoOnBrowser2.isDisplayed()).toBe(true);
 
         browser2.quit();
+    });
+
+    it("should show an alert saying that room is full when a third client tries to join", () => {
+        const browser2 = browser.forkNewDriverInstance(true);
+
+        browser2.ignoreSynchronization = true;
+
+        const browser3 = browser.forkNewDriverInstance(true);
+
+        browser3.ignoreSynchronization = true;
+
+        // There is not expectation in this test, but the below step will fail if no alert is displayed.
+        browser3.switchTo().alert().accept();
+
+        browser2.quit();
+        browser3.quit();
     });
 });
