@@ -18,10 +18,13 @@ module.exports.config = {
     onPrepare() {
         browser.ignoreSynchronization = true;
         jasmine.getEnv().addReporter(new SpecReporter({
-            displayFailuresSummary: true,
-            displayFailedSpec: true,
-            displaySuiteNumber: true,
-            displaySpecDuration: true
+            "displayFailuresSummary": true,
+            "displayFailedSpec": true,
+            "displaySuiteNumber": true,
+            "displaySpecDuration": true
         }));
+    },
+    jasmineNodeOpts: {
+        "defaultTimeoutInterval": 10000
     }
 };
