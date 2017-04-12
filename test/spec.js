@@ -50,9 +50,25 @@ describe("WebRTC Sample", () => {
         browser2.ignoreSynchronization = true;
 
         webrtcSample.snapAndSendButton.click();
-        browser2.wait(EC.visibilityOf(incomingPhotoOnBrowser2), 3000);
+        browser2.wait(EC.visibilityOf(incomingPhotoOnBrowser2), DEFAULT_TIMEOUT);
 
         expect(incomingPhotoOnBrowser2.isDisplayed()).toBe(true);
+
+        browser2.quit();
+    });
+
+    it("should show two incoming photos on browser 2 when browser 1 clicks 'snap and send' twice and they are in the same room", () => {
+        const browser2 = browser.forkNewDriverInstance(true);
+        const element2 = browser2.element;
+        const incomingPhotosOnBrowser2 = element2.all(by.css("#trail canvas"));
+
+        browser2.ignoreSynchronization = true;
+
+        webrtcSample.snapAndSendButton.click();
+        webrtcSample.snapAndSendButton.click();
+        browser2.wait(EC.visibilityOf(incomingPhotosOnBrowser2.last()), DEFAULT_TIMEOUT);
+
+        expect(incomingPhotosOnBrowser2.count()).toBe(2);
 
         browser2.quit();
     });
