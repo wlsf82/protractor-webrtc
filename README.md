@@ -1,5 +1,7 @@
 # WebRTC Sample
 
+⚠️ **This project has been deprecated.** ⚠️
+
 This is a sample project using real time communication with WebRTC and it is based on the following codelab: https://codelabs.developers.google.com/codelabs/webrtc-web/#8.
 
 ## Pre-requirements
